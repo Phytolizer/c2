@@ -1,0 +1,13 @@
+.gitignore
+
+&incdir = include
+
+CC = gcc
+
+CFLAGS += -Wall
+CFLAGS += -Wextra
+CFLAGS += -Wpedantic
+
+!cc = |> $(CC) $(CFLAGS) -I &(incdir) -c %f -o %o |> %f.o
+!ld = |> $(CC) $(LDFLAGS) %f -o %o -L. $(LIBS) |>
+!ar = |> ar rcs %o %f |>

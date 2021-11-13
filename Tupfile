@@ -1,0 +1,9 @@
+include_rules
+
+: src/common/*.o |> !ar |> libcommon.a
+
+LIBS = -lcommon
+: src/client/*.o | libcommon.a |> !ld |> client
+
+LIBS = -lcommon -lpthread
+: src/server/*.o | libcommon.a |> !ld |> server
